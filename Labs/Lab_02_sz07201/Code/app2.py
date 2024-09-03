@@ -37,7 +37,7 @@ class UI(QtWidgets.QMainWindow):
         self.searchButton.clicked.connect(self.search)
         
         # Connect the view function with the view button (to be implemented)
-        # self.viewButton.clicked.connect(self.view)
+        self.viewButton.clicked.connect(self.view)
         
         # Connect the delete function with the delete button (to be implemented)
         self.deleteButton.clicked.connect(self.delete)
@@ -83,7 +83,7 @@ class UI(QtWidgets.QMainWindow):
             if (category == "" or category == book_category) and \
                 (title == "" or title in book_title) and \
                 (book_type == "" or book_type == book_type_value) and \
-                (not issued or book_issued == "true"):
+                (not issued or book_issued == "True"):
                 self.booksTableWidget.setRowHidden(i, False)
             else:
                 self.booksTableWidget.setRowHidden(i, True)
@@ -104,7 +104,25 @@ class UI(QtWidgets.QMainWindow):
 
     def view(self):
         # TO BE IMPLEMENTED
-        pass
+        
+        # Ensure a row is selected
+
+        selected_row = self.booksTableWidget.currentRow()
+        
+        if selected_row == -1:
+            QtWidgets.QMessageBox.warning(self, "No Selection", "Please select a book to view.")
+            return
+        
+        ISBN = books[selected_row][0]
+        Title = books[selected_row][1]
+        Category = books[selected_row][2]
+        Type = books[selected_row][3]
+        Issued = books[selected_row][4]
+        
+        print(ISBN, Title, Category, Type, Issued)
+        self.view_book = ViewBook(ISBN, Title, Category, Type, Issued)
+        self.view_book.show()
+    
 
     def delete(self):
         # selected_rows = self.booksTableWidget.selectedRanges() #Sees which range has been selected
@@ -136,7 +154,44 @@ class UI(QtWidgets.QMainWindow):
         self.close()
 
 class ViewBook(QtWidgets.QMainWindow):
-    pass
+    def __init__(self, ISBN, Title, Category, Type, Issued):
+        super(ViewBook, self).__init__()
+        uic.loadUi('View Book.ui', self)
+        
+        print('HELLLLOOOW WORLD')
+        
+        self.ISBN = ISBN
+        self.Title = Title
+        self.Category = Category
+        self.Type = Type
+        self.Issued = Issued
+        
+        self.ISBN_LineEdit.setText(self.ISBN)
+        self.ISBN_LineEdit.setDisabled(True)
+        
+        self.Title_LineEdit.setText(self.Title)
+        self.Title_LineEdit.setDisabled(True)
+        
+        self.Category_LineEdit.setText(self.Category)
+        self.Category_LineEdit.setDisabled(True)
+        
+        # Compare the string with the three possible values
+        if self.Type == "Reference Book":
+            self.referenceBookRadioButton.setChecked(True)
+            self.referenceBookRadioButton.setDisabled(True)
+        elif self.Type == "Text Book":
+            self.textBookRadioButton.setChecked(True)
+            self.textBookRadioButton.setDisabled(True)
+        elif self.Type == "Journal":
+            self.journalRadioButton.setChecked(True)
+            self.journalRadioButton.setDisabled(True)
+        else:
+            print("Unknown book type")  # Handle unexpected cases
+            
+        if self.Issued == "True":
+            self.Issued_checkBox.setChecked(True)
+            self.Issued_checkBox.setDisabled(True)
+        
 
 app = QtWidgets.QApplication(sys.argv)  # Create an instance of QtWidgets.QApplication
 window = UI()  # Create an instance of our UI class

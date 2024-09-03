@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ViewBook by Asghar</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="Category">
@@ -118,7 +118,7 @@
      <string>Issued</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="ISBN_LineEdit">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -128,7 +128,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="Title_LineEdit">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -138,7 +138,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="Category_LineEdit">
     <property name="geometry">
      <rect>
       <x>80</x>
