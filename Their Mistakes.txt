@@ -1,0 +1,22 @@
+Their Mistakes: 
+Cause one employee can only be designated to one "Project" 
+And that "employee" can be designed "Project Lead" 
+There will only be one employee that will lead the project.
+
+can't tell which is the lead in schema.
+
+We can't tell the "work history" of our employees. 
+.
+Our Mistakes:
+"While some projects may be managed by a single department, most involve multiple departments" 
+.
+Differences: 
+Usage of descriptive attributes for task/employees.
+
+Question 2.
+Why were the two tables, especially related to Item Description, of purchase and sales merged together? 
+
+Question 3. 
+We assumed that the product can only belong to one sub-category
+Why is there a need to make many-to-many relationship between so many 
+Size is not a multivalued attribute? 

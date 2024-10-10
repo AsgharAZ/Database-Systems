@@ -1,0 +1,33 @@
+Rename columns 
+Always check your csv data-types  
+.shape is a nice way to check #rows and columns 
+.count() is a good way to quickly check if any value is missing 
+Df[Df.duplicated()] only gives rows which are duplicated. The inner bracket thing returns list of boolean values  
+Df.drop_duplicates() , just in case save it in a variable 
+Df2.isnull().sum() tells the total number of missing values 
+
+ 
+If you have 2%, 3% or 5% of missing values. Then you just drop those rows 18:33. That's an industry rule of thumb  
+But if you have 5% or more than 10% of missing value, then you think of filling them 
+However, if it's 20% then you are losing a lot of information. You might consider dropping the entire column, cause if you try filling it, the results might be too skewed
+.dropna() drops all the rows with missing values 
+.copy() copies data  
+
+Summary Measures/Tables (Mode, mean, Median) 
+For categorical, use mode 
+For Numerical, use mean 
+For ordinal numerical, use median (or mode) 
+
+.(column name without "").value_count() counts the number of unique occurences. Powerful function, tells story. If you just want top 20 you also add ".nlargest(20)" 
+a.plot(kind = 'bar', figsize(5,5)) 
+Sns.countplot 2nd command is sorting top 10 by numbers 
+Then sir fixed axis in third code block. 
+
+Scatterplot is used when u wanna see relationship between the two variables, if one increasing then is the other one increasing or decreasing 
+Catplot is category plot  
+Corr -> correlation multivariate (scatter but for multivariate( 
+
+"Median" is cause the "overall" skill level is an ordinal numerical data, in which it is usually preferred that you do "Median" over both "Mode" and "Mean". Median also offers a better understanding of the central point of the data and is less affected by outliers or skewed distributions, although Mode still could be used if the data is not very equally distributed. We don't use mean for data like these.  
+The median values of skill levels across different ages present an insightful view of the data distribution. The highest median value of 78.0 is observed at age 43, indicating a peak in skill level for this age group. This high value suggests that individuals around this age have a notably higher skill level compared to others. 
+For most ages, particularly from 27 to 38, the median skill level stabilizes around 67.0, reflecting a consistent skill level among these age groups. This plateau indicates that individuals in their late 20s to late 30s generally have similar skill levels, which might imply a period of skill consolidation or steady development. 
+The data shows a gradual decrease in median skill levels as age progresses beyond the mid-30s, with values dropping to 55.0 by ages 18 and 44. This trend reflects a general pattern where performance improves with experience up to a point, after which it declines with age. 
